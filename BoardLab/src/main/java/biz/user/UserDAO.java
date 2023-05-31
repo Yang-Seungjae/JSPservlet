@@ -12,6 +12,8 @@ public class UserDAO {
 	private ResultSet rs;
 	private static String USER_INSERT = "insert into users (id, password, name, role) " + "values (?,?,?,?)";
 
+	private static String USER_GET = "SELECT ID, PASSWORD FROM users WHERE ID = ? AND PASSWORD = ?";
+
 	public void insertUser(UserVO vo) {
 		try {
 			conn = JDBCUtil.getConnection();
@@ -25,6 +27,30 @@ public class UserDAO {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(stmt, conn);
+
 		}
+	}
+
+	public UserVO getUser(UserVO vo) {
+		UserVO user = null;
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(USER_GET);
+			stmt.setString(1, vo.getId());
+			stmt.setString(2, vo.getPassword());
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				user = new UserVO();
+				user.setId(rs.getString("ID"));
+				user.setPassword(rs.getString("PASSWORD"));
+				user.setName(rs.getString("NAME"));
+				user.setRole(rs.getString("ROLE"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return user;
 	}
 }

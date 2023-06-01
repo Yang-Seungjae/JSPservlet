@@ -12,7 +12,7 @@ public class UserDAO {
 	private ResultSet rs;
 	private static String USER_INSERT = "insert into users (id, password, name, role) " + "values (?,?,?,?)";
 
-	private static String USER_GET = "SELECT ID, PASSWORD FROM users WHERE ID = ? AND PASSWORD = ?";
+	private static String USER_GET = "SELECT * FROM users WHERE ID = ? AND PASSWORD = ?";
 
 	public void insertUser(UserVO vo) {
 		try {

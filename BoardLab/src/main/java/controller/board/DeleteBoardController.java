@@ -7,25 +7,14 @@ import biz.board.BoardDAO;
 import biz.board.BoardVO;
 import controller.Controller;
 
-public class InsertBoardController implements Controller {
-
-// 새로운 책 등록할때 사용하는 것
+public class DeleteBoardController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-
-		String title = request.getParameter("title");
-		String writer = request.getParameter("writer");
-		String content = request.getParameter("content");
-
+		String seq = request.getParameter("seq");
 		BoardVO vo = new BoardVO();
-		vo.setTitle(title);
-		vo.setWriter(writer);
-		vo.setContent(content);
-
+		vo.setSeq(Integer.parseInt(seq));
 		BoardDAO dao = new BoardDAO();
-		dao.insertBoard(vo);
-
+		dao.deleteBoard(vo);
 		return "getBoardList.do";
 	}
-
 }

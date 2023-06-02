@@ -123,4 +123,37 @@ public class BoardDAO {
 		}
 	}
 
+	private static String SEARCH_BY_WRITER = "SELECT * FROM board WHERE writer = ?";
+
+	public List<BoardVO> searchBoard(String writer) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<BoardVO> boardList = new ArrayList<BoardVO>();
+
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(SEARCH_BY_WRITER);
+			stmt.setString(1, writer);
+			rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				BoardVO board = new BoardVO();
+				board.setSeq(rs.getInt("seq"));
+				board.setTitle(rs.getString("title"));
+				board.setWriter(rs.getString("writer"));
+				board.setRegDate(rs.getDate("regDate"));
+				board.setContent(rs.getString("content"));
+
+				boardList.add(board);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+
+		return boardList;
+	}
+
 }

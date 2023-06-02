@@ -10,6 +10,7 @@ import controller.Controller;
 public class GetBoardController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+
 		String seq = request.getParameter("seq");
 		BoardVO vo = new BoardVO();
 		vo.setSeq(Integer.parseInt(seq));

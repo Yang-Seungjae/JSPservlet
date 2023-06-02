@@ -11,14 +11,14 @@ pageEncoding="EUC-KR"%>
 <h1>Board List</h1>
 <hr/>
 <h3>${user.name}님 환영합니다. <a href="logout.do">logout</a></h3>
-<form action="getBoardsByWriter.do" method="GET">
+<form action="SearchBoard.do" method="post">
         <label for="writer">작성자:</label>
         <input type="text" id="writer" name="writer">
         <button type="submit">검색</button>
     </form>
 <table border="1">
 <tr>
-<td>no</td><td>title</td><td>writer</td><td>date</td>
+<td>No</td><td>Title</td><td>Writer</td><td>Date</td>
 </tr>
 <c:forEach var="board" items="${boardList}">
 <tr>

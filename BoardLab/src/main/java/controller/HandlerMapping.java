@@ -7,6 +7,7 @@ import controller.board.DeleteBoardController;
 import controller.board.GetBoardController;
 import controller.board.GetBoardListController;
 import controller.board.InsertBoardController;
+import controller.board.SearchController;
 import controller.board.UpdateBoardController;
 import controller.user.InsertUserController;
 import controller.user.LoginController;
@@ -26,6 +27,7 @@ public class HandlerMapping {
 		mappings.put("/updateBoard.do", new UpdateBoardController());
 		mappings.put("/deleteBoard.do", new DeleteBoardController());
 		mappings.put("/getBoard.do", new GetBoardController());
+		mappings.put("/SearchBoard.do", new SearchController());
 	}
 
 	public Controller getController(String path) {

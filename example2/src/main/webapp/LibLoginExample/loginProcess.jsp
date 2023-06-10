@@ -1,4 +1,4 @@
-<%@page import="kr.ac.kopo.member.MemberVO"%>
+<%@page import="kr.ac.kopo.vo.MemberVO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>

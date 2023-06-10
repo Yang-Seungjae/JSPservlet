@@ -1,4 +1,4 @@
-package kr.ac.kopo.member;
+package kr.ac.kopo.vo;
 
 public class MemberVO {
 
@@ -6,7 +6,15 @@ public class MemberVO {
 	private String password;
 	private String name;
 	private String type;
-	
+
+	public MemberVO(String id, String password, String name, String type) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.type = type;
+	}
+
 	public MemberVO() {
 	}
 
@@ -47,6 +55,5 @@ public class MemberVO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	
+
 }

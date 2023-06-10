@@ -4,7 +4,21 @@
     <fullyQualifiedTypeName name="javax.servlet.jsp.JspWriter"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="biz.board.BoardVO"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.vo.BookVO"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.MainController"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.InsertUserController"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.InsertUserProcessController"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.LogoutController"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.vo.RentalVO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.ReturnBookController"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.DeleteBookController"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.CheckDuplicateIdController"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.MyInfoController"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.DeleteUserController"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.DeleteUserProcessController"/>
 </qualifiedTypeNameHistroy>

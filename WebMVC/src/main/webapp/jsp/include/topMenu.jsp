@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core" %>
-    <div class="banner">
+ <div class="banner">
       <div id="star">
         <img src="star.png" width="40" height="40" style="filter: invert()" />
       </div>
@@ -13,9 +13,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 		
       </div>
       <div id="menu">
-       <a href="/WebMVC/main.do">홈 |</a>
+      
+      <a href="/WebMVC/main.do">홈 |</a>
+      
       <c:if test="${ loginUser.type eq 'S' }">
-				회원관리 |
 				<a href = "/WebMVC/insertbook.do">도서등록</a>|
 			</c:if>
 			 
@@ -27,7 +28,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			 	</c:when>
 			 	<c:otherwise> 
 			 		<a href = "/WebMVC/booklist.do">도서목록</a> |
-			 		마이페이지 | 
+			 		<a href = "/WebMVC/myinfo.do">마이페이지 |</a> 
 			 		<a href="/WebMVC/logout.do">로그아웃</a>
 			 	</c:otherwise>
 			</c:choose>

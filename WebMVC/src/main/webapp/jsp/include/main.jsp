@@ -78,7 +78,6 @@
       <a href="/WebMVC/main.do">홈 |</a>
       
       <c:if test="${ loginUser.type eq 'S' }">
-				회원관리 |
 				<a href = "/WebMVC/insertbook.do">도서등록</a>|
 			</c:if>
 			 
@@ -100,16 +99,7 @@
  
     <div>
       <p id="main">
-        도서검색
-        <span style="color: rgb(255, 0, 0)">도서검색 텍스트 박스 만들기</span><br />
-        <br /><br />
-
-        <a
-          id="link1" 
-          href="http://s3bucket-homepage.s3-website.ap-northeast-2.amazonaws.com"
-          target="_blank"
-          ><i>View my Work <img id="right" src="right.png" width="20" height="20"
-        /></a>
+        <jsp:include page="/jsp/include/mainbody.jsp" />
       </p>
     </div>
   </body>

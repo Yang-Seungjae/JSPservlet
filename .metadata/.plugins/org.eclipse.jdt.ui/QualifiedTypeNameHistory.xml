@@ -14,11 +14,14 @@
     <fullyQualifiedTypeName name="kr.ac.kopo.controller.InsertUserProcessController"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.controller.LogoutController"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.vo.RentalVO"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.controller.ReturnBookController"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.controller.DeleteBookController"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.controller.CheckDuplicateIdController"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.controller.MyInfoController"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.controller.DeleteUserController"/>
     <fullyQualifiedTypeName name="kr.ac.kopo.controller.DeleteUserProcessController"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.dao.RentalDAO"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.vo.MemberVO"/>
+    <fullyQualifiedTypeName name="kr.ac.kopo.controller.ReturnBookProcessController"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

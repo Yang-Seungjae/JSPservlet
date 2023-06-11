@@ -15,6 +15,11 @@ public class MemberVO {
 		this.type = type;
 	}
 
+	public MemberVO(String id) {
+		super();
+		this.id = id;
+	}
+
 	public MemberVO() {
 	}
 

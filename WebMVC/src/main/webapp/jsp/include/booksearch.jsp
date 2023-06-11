@@ -1,72 +1,136 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/webLib/css/layout.css">
+
+<script>
+	function checkForm() {
+		let f = document.searchform;
+		if (f.sckeyword.value == '') {
+			alert('°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä')
+			f.sckeyword.focus()
+			return false
+		}
+		return true
+	}
+</script>
 </head>
 <body>
+
 	<header>
-		<jsp:include page="/jsp/include/topMenu.jsp"/>
+		<jsp:include page="/jsp/include/topMenu.jsp" />
 	</header>
-<section>
-    <h1>ë„ì„œê²€ìƒ‰</h1>
-    <form action="booksearchprocess.do" method="POST">
-        <div>
-            <label for="title"></label>
-            <input type="text" id="title" name="title">
-            <input type="submit" value="ï¿½Ë»ï¿½">
-        </div>
-    </form>
-    
-    <c:choose>
+	<section>
+		<form method="post" action="/WebMVC/booksearchprocess.do"
+			name="searchform" onsubmit="return checkForm()">
+			<div align="center">
+				<br>
+				<h2>µµ¼­°Ë»ö</h2>
+				<br> <select name="searchBy">
+					<option id="total" value="total" selected>ÅëÇÕ°Ë»ö</option>
+					<option id="title" value="title" >µµ¼­¸í</option>
+					<option id="writer" value="writer">ÀúÀÚ</option>
+					<option id="publisher" value="publisher">ÃâÆÇ»ç</option>
+				</select> 
+				<input type="search" id="sckeyword" name="sckeyword"
+					placeholder="°Ë»öÇÒ µµ¼­¸í">
+				<button type="submit" id="searchbook" class="btn btn-primary"
+					>°Ë»ö</button>
+			</div>
+		
+		
+		</form>
+			<c:forEach var="book" items="${sbook}">
+						<c:choose>
         <c:when test="${empty sbook}">
            
-            <p>ê²€ìƒ‰ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.</p>
+            <p>°Ë»ö°á°ú°¡ ¾ø½À´Ï´Ù.</p>
         </c:when>
         <c:otherwise>
            
-            <table>
-                <thead>
-                    <tr>
-                        <th>ë„ì„œë²ˆí˜¸	|</th>
-                        <th>ì œëª©	    |</th>
-                        <th>ì‘ê°€   	|</th>
-                        <th>ì¶œíŒì‚¬	|</th>
-                        <th>ëŒ€ì—¬ì—¬ë¶€	|</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="book" items="${sbook}">
-                        <tr>
-                            <td>${book.bookNO}</td>
-                            <td>${book.bookTitle}</td>
-                            <td>${book.bookWriter}</td>
-                            <td>${book.bookPublisher}</td>
-                            <td>
-                                <c:choose>
-                                    <c:when test="${book.rented_book eq '1'}">
-                                        ëŒ€ì¶œ ì¤‘
+            <h1>ÀüÃ¼ µµ¼­</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>µµ¼­¹øÈ£	 |</th>
+					<th>Á¦¸ñ		 |</th>
+					<th>ÀÛ°¡		 |</th>
+					<th>ÃâÆÇ»ç	 |</th>
+					<th>´ë¿©¿©ºÎ	 |</th>
+					<c:if test="${loginUser.type eq ('U' || 'S')}"><th>´ëÃâ |</th></c:if>
+					
+					
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="book" items="${sbook}">
+					<tr>
+						<td>${book.no}</td>
+						<td>${book.title}</td>
+						<td>${book.writer}</td>
+						<td>${book.publisher}</td>
+						<td><c:choose>
+								<c:when test="${book.rented_book eq '1'}">
+                                        ´ëÃâ Áß
                                     </c:when>
-                                    <c:otherwise>
-                                       ëŒ€ì¶œ ê°€ëŠ¥
+								<c:otherwise>
+                                        ´ëÃâ °¡´É
                                     </c:otherwise>
-                                </c:choose>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+							</c:choose></td>
+						<td><c:choose>
+								 <c:when test="${empty loginUser}">
+							        ·Î±×ÀÎ ÈÄ ´ëÃâ
+							    </c:when>
+							    <c:when test="${book.rented_book eq '1'}">
+							        ´ëÃâ Áß
+							    </c:when>
+								<c:otherwise>
+							<form action="rentbook.do" method="POST">
+								<input type="hidden" name="no" value="${ book.no }">
+								<input type="hidden" name="id" value="${ loginUser.id }">
+								<input type="submit" value="´ëÃâÇÏ±â">
+							</form>
+						
+								</c:otherwise>
+							</c:choose></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+            
         </c:otherwise>
     </c:choose>
-</section>
+		</c:forEach>
 
+			<!-- <div class="keywordInput">
+				<label for="searchKeyword" class="blind">°Ë»ö¾î ÀÔ·Â</label> 
+				<input
+					type="text" id="searchKeyword" name="booksearch"
+					autocomplete="off" placeholder="°Ë»ö¾î ÀÔ·Â">
+			</div>
+		<!-- 	<div class="bscSubmit"> 
+				<a href="/WebMVC/bksearchprocess.do" id="searchbook">°Ë»ö</a>
+			</div> -->
+			
 
-	<footer>
-		<%@ include file="/jsp/include/bottom.jsp" %>
-	</footer>
+	</section>
+	
 </body>
-</html>		
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

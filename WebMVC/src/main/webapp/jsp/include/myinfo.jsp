@@ -26,14 +26,10 @@
     </div>
     
     <div>
-    대여중인 도서목록
-   	<form action="returnbook.do" method="POST"> <%-- 회원탈퇴버튼 생성 --%>
-			<input type="submit" value="회원탈퇴">
+     <form action="returnbooklist.do" method="POST"> <%-- 회원탈퇴버튼 생성 --%>
+			<input type="submit" value="대여중인 도서목록">
 			</form>
-    </div>
     
-    <div>
-    <jsp:include page="/jsp/include/returnbooklist.jsp"/>
     </div>
     
    

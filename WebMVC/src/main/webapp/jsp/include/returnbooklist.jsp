@@ -9,9 +9,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<header>
+		<jsp:include page="/jsp/include/topMenu.jsp"/>
+	</header>
 
 <section>
-		<h1>전체 도서</h1>
+		<h1>대여중 도서</h1>
 		<table>
 			<thead>
 				<tr>
@@ -20,8 +23,8 @@
 					<th>작가		 |</th>
 					<th>출판사	 |</th>
 					<th>대여여부	 |</th>
-					<c:if test="${loginUser.type eq ('U' || 'S')}"><th>대출 |</th></c:if>
-					<c:if test="${ loginUser.type eq 'S' }"><th>관리 |</th></c:if>
+					<c:if test="${loginUser.type eq ('U' || 'S')}"><th>반납 |</th></c:if>
+				
 					
 				</tr>
 			</thead>
@@ -42,25 +45,13 @@
 							</c:choose></td>
 						<td><c:choose>
 								<c:when test="${book.rented_book eq '1'}">
-            					대출불가
-        						</c:when>
-								<c:otherwise>
-							<form action="rentbook.do" method="POST">
+            					<form action="returnbook.do" method="POST">
 								<input type="hidden" name="no" value="${ book.no }">
 								<input type="hidden" name="id" value="${ loginUser.id }">
-								<input type="submit" value="대출하기">
+								<input type="submit" value="반납하기">
 							</form>
-							<c:if test="${loginUser.type eq 'S'}"> <!-- 매니저인 경우에만 삭제 버튼 표시 -->
-                 			   <td>
-                			   
-                           <form action="deletebook.do" method="post" onsubmit="return confirm('삭제하시겠습니까?');">
-   								 <input type="hidden" name="no" value="${book.no}" />
-   								 <input type="submit" value="삭제" />
-							</form>
-
-                            </td>
-                        </c:if>
-								</c:otherwise>
+        						</c:when>
+				
 							</c:choose></td>
 					</tr>
 				</c:forEach>

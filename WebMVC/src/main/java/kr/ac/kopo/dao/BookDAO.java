@@ -11,6 +11,148 @@ import kr.ac.kopo.vo.BookVO;
 
 public class BookDAO {
 
+	// 통합검색
+	public List<BookVO> searchBook(String str) {
+		List<BookVO> sbook = new ArrayList<>();
+		BookVO book = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT INSTR((NO || TITLE || WRITER || PUBLISHER), ?) as scbook");
+		sql.append(" ,NO, TITLE, WRITER, PUBLISHER, rented_book FROM books ");
+		sql.append("WHERE INSTR((NO || TITLE ||  WRITER || PUBLISHER ), ?) != 0 ");
+		sql.append("ORDER BY NO ");
+
+		try (Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			pstmt.setString(1, str);
+			pstmt.setString(2, str);
+//	         System.out.println("1");
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				book = new BookVO();
+				book.setNo(rs.getInt("no"));
+				book.setTitle(rs.getString("title"));
+				book.setWriter(rs.getString("writer"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setRented_book(rs.getInt("rented_book"));
+
+				sbook.add(book);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sbook;
+	}
+
+	// 제목검색
+	public List<BookVO> searchBookByTitle(String str) {
+		List<BookVO> sbook = new ArrayList<>();
+		BookVO book = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * FROM books WHERE INSTR(TITLE, ?) != 0 ");
+
+		try (Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			pstmt.setString(1, str);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				book = new BookVO();
+				book.setNo(rs.getInt("no"));
+				book.setTitle(rs.getString("title"));
+				book.setWriter(rs.getString("writer"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setRented_book(rs.getInt("rented_book"));
+
+				sbook.add(book);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sbook;
+	}
+
+	// 저자검색
+	public List<BookVO> searchBookByWriter(String str) {
+		List<BookVO> sbook = new ArrayList<>();
+		BookVO book = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * FROM books WHERE INSTR(WRITER, ?) != 0 ");
+
+		try (Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			pstmt.setString(1, str);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				book = new BookVO();
+				book.setNo(rs.getInt("no"));
+				book.setTitle(rs.getString("title"));
+				book.setWriter(rs.getString("writer"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setRented_book(rs.getInt("rented_book"));
+
+				sbook.add(book);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sbook;
+	}
+
+	// 출판사 검색
+	public List<BookVO> searchBookByPublisher(String str) {
+		List<BookVO> sbook = new ArrayList<>();
+		BookVO book = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * FROM books WHERE INSTR(PUBLISHER, ?) != 0 ");
+
+		try (Connection conn = new ConnectionFactory().getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
+			pstmt.setString(1, str);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				book = new BookVO();
+				book.setNo(rs.getInt("no"));
+				book.setTitle(rs.getString("title"));
+				book.setWriter(rs.getString("writer"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setRented_book(rs.getInt("rented_book"));
+
+				sbook.add(book);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sbook;
+	}
+
+	// 3-2 다중 검색!!!! 1=통합 2=제목 3=저자 4=출판사
+	public List<BookVO> searchBooks(int choose, String str) {
+		List<BookVO> sbook = new ArrayList<>();
+
+		switch (choose) {
+		case 1:
+			sbook = this.searchBook(str);
+			break;
+		case 2:
+			sbook = this.searchBookByTitle(str);
+			break;
+		case 3:
+			sbook = this.searchBookByWriter(str);
+			break;
+		case 4:
+			sbook = this.searchBookByPublisher(str);
+			break;
+		}
+		return sbook;
+	}
+
 	public void deleteBook(BookVO book) {
 		String sql = "DELETE FROM books WHERE no = ?";
 

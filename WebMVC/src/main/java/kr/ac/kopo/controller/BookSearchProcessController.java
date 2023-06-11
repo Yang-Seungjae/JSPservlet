@@ -12,23 +12,34 @@ import kr.ac.kopo.vo.BookVO;
 public class BookSearchProcessController implements Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
 
-		String book = request.getParameter("title");
 		HttpSession session = request.getSession();
 
-		BookDAO dao = new BookDAO();
-		List<BookVO> sbook = dao.selectByAll(book);
+		String searchBy = request.getParameter("searchBy");
+		System.out.println(searchBy);
+		String str = request.getParameter("sckeyword");
+		System.out.println(str);
 
-		String msg = "";
-//		if(sbook != null) {
+		BookDAO dao = new BookDAO();
+		List<BookVO> sbook = null;
+		switch (searchBy) {
+		case "total":
+			sbook = dao.searchBooks(1, str);
+			break;
+		case "title":
+			sbook = dao.searchBooks(2, str);
+			break;
+		case "writer":
+			sbook = dao.searchBooks(3, str);
+			break;
+		case "publisher":
+			sbook = dao.searchBooks(4, str);
+			break;
+		}
+
 		request.setAttribute("sbook", sbook);
-//			session.setAttribute("sbook", sbook);
-		msg = "검색된 내역입니다.";
-//			String url = "/webLib/book/booksearch.do";
-//		} else {
-//			msg = "검색된 책이 없습니다.";
-//		}
 
 		return "/jsp/include/booksearch.jsp";
 

@@ -22,6 +22,7 @@ import kr.ac.kopo.controller.MainController;
 import kr.ac.kopo.controller.MyInfoController;
 import kr.ac.kopo.controller.RentBookController;
 import kr.ac.kopo.controller.ReturnBookController;
+import kr.ac.kopo.controller.ReturnBookProcessController;
 import kr.ac.kopo.controller.UpdateInfoController;
 import kr.ac.kopo.controller.UpdateInfoProcessController;
 
@@ -44,7 +45,8 @@ public class HandlerMapping {
 		mappings.put("/insertbookprocess.do", new InsertBookProcessController());
 		mappings.put("/booklist.do", new BookListController());
 		mappings.put("/rentbook.do", new RentBookController());
-		mappings.put("/returnbook.do", new ReturnBookController());
+		mappings.put("/returnbooklist.do", new ReturnBookController());
+		mappings.put("/returnbook.do", new ReturnBookProcessController());
 		mappings.put("/deletebook.do", new DeleteBookController());
 		mappings.put("/checkduplicateid.do", new CheckDuplicateIdController());
 		mappings.put("/myinfo.do", new MyInfoController());

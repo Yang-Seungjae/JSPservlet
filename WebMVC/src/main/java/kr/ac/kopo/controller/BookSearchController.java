@@ -8,6 +8,6 @@ public class BookSearchController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 
-		return "/jsp/book/booksearch.jsp";
+		return "/jsp/include/booksearch.jsp";
 	}
 }

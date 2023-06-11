@@ -11,9 +11,8 @@
     <h1>내 정보</h1>
     
         <p>아이디 		 : ${user.id}</p>
-        <p>비밀번호 		 : ${user.password}</p>
         <p>이름       	 : ${user.name}</p>
-        <p>유형       	 : ${user.type}</p>
+        <p>유형(S:관리자, U:사용자)       	 : ${user.type}</p>
     
     <div>
    			 <form action="updateinfo.do" method="POST"> <%-- 회원정보수정버튼 생성 --%>

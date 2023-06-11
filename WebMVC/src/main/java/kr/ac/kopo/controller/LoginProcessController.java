@@ -9,35 +9,35 @@ import kr.ac.kopo.vo.MemberVO;
 
 public class LoginProcessController implements Controller {
 
-	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		request.setCharacterEncoding("utf-8");
-
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		MemberVO login = new MemberVO(id, password);
+		HttpSession session = request.getSession();
+
+		MemberVO vo = new MemberVO();
+		vo.setId(id);
+		vo.setPassword(password);
 
 		MemberDAO dao = new MemberDAO();
-		MemberVO user = dao.login(login);
-		HttpSession session = request.getSession();
+		MemberVO user = dao.login(vo);
+		System.out.println("user : " + user);
 
 		String msg = "";
 		String url = "";
-		System.out.println(user);
 		if (user != null) {
 			session.setAttribute("loginUser", user);
-			msg = "로그인 성공";
-			url = "/WebMVC/main.do"; // main.do 만들기
+			msg = user.getName() + "님 환영합니다";
+			url = "/WebMVC/main.do";
 		} else {
-			msg = "아이디 또는 패스워드가 잘못되었습니다";
+
+			msg = "아이디와 패스워드를 확인해주세요";
 			url = "/WebMVC/login.do";
 		}
 
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
-		return "/jsp/login/loginProcess.jsp";
+		return "/jsp/include/refreshprocess.jsp";
 	}
 
 }

@@ -10,17 +10,36 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0/css/bootstrap.min.css" />
   <style>
+
+
     .navbar {
       justify-content: center;
+    }
+
+    .navbar-brand {
+      margin-right: auto;
+    }
+
+    .navbar-nav {
+      margin-left: auto;
+    }
+
+    .navbar .nav-link {
+      padding: 0.5rem 1rem;
+      transition: all 0.3s;
+    }
+
+    .navbar .nav-link:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+    <div class="container-fluid">
       <a class="navbar-brand" href="/WebMVC/main.do">
-        <img src="/WebMVC/image/banner.jpg" alt="Logo" width="80" height="80" style="border-radius: 50%; object-fit: cover;">
+        <img src="/WebMVC/image/banner.jpg" alt="Logo" id="logo" width="80" height="80" style="border-radius: 50%; object-fit: cover;">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,6 +80,8 @@
       </div>
     </div>
   </nav>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
+

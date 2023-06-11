@@ -5,57 +5,92 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+<style>
+	header {
+		background-color: #f0f0f0;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+
+	body {
+		background-color: #f8f9fa;
+		padding: 20px;
+		background-image: url("/WebMVC/image/123.jpg"); /* 배경 이미지 추가 */
+		background-size: cover; /* 이미지를 화면에 꽉 채우도록 설정 */
+	}
+
+	.card {
+		margin-top: 250px;
+		
+	}
+
+	form {
+		margin: 20px;
+	}
+
+	.form-group {
+		margin-bottom: 15px;
+	}
+
+	label {
+		font-weight: bold;
+	}
+
+	.btn-primary {
+		background-color: #007bff; /* 버튼 배경색 변경 */
+		color: #ffffff; /* 버튼 글자색 변경 */
+		border-color: #007bff;
+	}
+
+</style>
+
 <script>
 	function checkForm() {
-	
 		let f = document.loginForm;
-		if(f.id.value == '') {
-			alert('ID를 입력하세요')
-			f.id.focus()
-			return false
+		if (f.id.value == '') {
+			alert('ID를 입력하세요');
+			f.id.focus();
+			return false;
 		}
-		
-		if(f.password.value == '') {
-			alert('패스워드를 입력하세요')
-			f.password.focus()
-			return false
+
+		if (f.password.value == '') {
+			alert('패스워드를 입력하세요');
+			f.password.focus();
+			return false;
 		}
-		
-		return true
+
+		return true;
 	}
 </script>
 </head>
 <body>
 	<header>
-		
+		<jsp:include page="/jsp/include/topMenu.jsp" />
 	</header>
 	<section>
 		<div align="center">
-		<br>
-		<h2>로그인</h2>
-		<br>
-		<div class="card" style="width: 18rem;">
-		<form method="post" action="/WebMVC/loginProcess.do" 
-			  name="loginForm" onsubmit="return checkForm()">
-			<div class="form-group">
-				<label for="id">ID</label> 
-				<input type="text" class="form-control" id="id" name="id">
+			<br>
+			<h2>로그인</h2>
+			<br>
+			<div class="card" style="width: 18rem; background-color: rgba(245, 245, 220, 0.8);">
+				<form method="post" action="/WebMVC/loginProcess.do" name="loginForm" onsubmit="return checkForm()">
+					<div class="form-group">
+						<label for="id" style="color: #8B4513;">ID</label>
+						<input type="text" class="form-control" id="id" name="id">
+					</div>
+					<div class="form-group">
+						<label for="password" style="color: #8B4513;">Password</label>
+						<input type="password" class="form-control" id="password" name="password">
+					</div>
+
+					<button type="submit" class="btn btn-primary" style="background-color: #D2B48C; color: #8B4513; border-color: #D2B48C;">로그인</button>
+				</form>
 			</div>
-			<div class="form-group">
-				<label for="password">Password</label> 
-				<input type="password" class="form-control" id="password" name="password">
-			</div>
-	
-			<button type="submit" class="btn btn-primary">로그인</button>
-		</form>
-		</div>
 		</div>
 	</section>
-	<footer>
-	
-	</footer>
 </body>
 </html>
+

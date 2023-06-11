@@ -1,7 +1,6 @@
 package kr.ac.kopo.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -96,38 +95,32 @@ public class MemberDAO {
 		return false;
 	}
 
-	public MemberVO login(MemberVO login) throws Exception {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+	public MemberVO login(MemberVO vo) {
 
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pass = "hr";
-		MemberVO loginUser = new MemberVO();
+		MemberVO user = null;
 		StringBuilder sql = new StringBuilder();
-		sql.append("select * ");
-		sql.append("  from Lib_member ");
-		sql.append(" where id = ? and password = ? ");
+		sql.append("select id, password, name, type from Lib_member where id = ? and password = ?");
 
-		try (Connection conn = DriverManager.getConnection(url, user, pass);
+		try (Connection conn = new ConnectionFactory().getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
 
-			pstmt.setString(1, login.getId());
-			pstmt.setString(2, login.getPassword());
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPassword());
 
 			ResultSet rs = pstmt.executeQuery();
-
 			if (rs.next()) {
-
-				loginUser.setId(rs.getString("id"));
-				loginUser.setPassword(rs.getString("password"));
-				loginUser.setName(rs.getString("name"));
-				loginUser.setType(rs.getString("type"));
-
+				user = new MemberVO();
+				user.setId(rs.getString("ID"));
+				user.setPassword(rs.getString("PASSWORD"));
+				user.setName(rs.getString("NAME"));
+				user.setType(rs.getString("TYPE"));
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
+
 		}
-		return loginUser;
+		return user;
 	}
 
 	public void insertUser(MemberVO member) { // 회원 등록

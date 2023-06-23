@@ -79,7 +79,7 @@
           <th>제목</th>
           <th>작가</th>
           <th>출판사</th>
-          <th>대여여부</th>
+          <th style="width : 100px">대여여부</th>
           <c:if test="${loginUser.type eq ('U' || 'S')}"><th>대출</th></c:if>
           <c:if test="${loginUser.type eq 'S'}"><th class="manage-column">관리</th></c:if>
         </tr>

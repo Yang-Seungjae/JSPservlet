@@ -20,6 +20,7 @@ public class LoginProcessController implements Controller {
 
 		MemberDAO dao = new MemberDAO();
 		MemberVO user = dao.login(vo);
+		System.out.println("vo : " + vo);
 		System.out.println("user : " + user);
 
 		String msg = "";

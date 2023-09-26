@@ -59,6 +59,7 @@ public class MemberDAO {
 				PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
 
 			pstmt.setString(1, member.getId());
+			System.out.println("로그인한 ID : " + member.getId());
 			ResultSet rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -153,7 +154,13 @@ public class MemberDAO {
 			pstmt.setString(6, member.getPhone());
 			pstmt.setString(7, member.getAddress());
 			pstmt.setString(8, member.getPostcode());
-			pstmt.setString(9, member.getUser_type());
+
+			if (member.getUser_type().equals("admin")) {
+				pstmt.setString(9, "A");
+			} else {
+				pstmt.setString(9, "U");
+			}
+
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

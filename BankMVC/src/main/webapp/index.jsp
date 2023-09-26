@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>¿ÀÇÂ¹ğÅ©À¥ÆäÀÌÁöÇÁ·ÎÁ§Æ®</title>
+  <title>ì˜¤í”ˆë±…í¬ì›¹í˜ì´ì§€í”„ë¡œì íŠ¸</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -49,33 +50,32 @@
     
     <!-- End Header -->
     
-
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
-          <h1>¿ÀÇÂ¹ğÅ·¼­ºñ½º</h1>
-          <h2>Æú·ÎÀºÇà¿¡¼­ ÇÑ¹ø¿¡!</h2>
+          <h1>ì˜¤í”ˆë±…í‚¹ì„œë¹„ìŠ¤</h1>
+          <h2>í´ë¡œì€í–‰ì—ì„œ í•œë²ˆì—!</h2>
         </div>
       </div>
       <div class="text-center">
-        <a href="#about" class="btn-get-started scrollto">¼­ºñ½ºÀÌ¿ëÇÏ±â</a>
+        <a href="/BankMVC/beforeinsertUser.do" class="btn-get-started scrollto">ì„œë¹„ìŠ¤ì´ìš©í•˜ê¸°</a>
       </div>
 
       <div class="row icon-boxes">
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box">
             <div class="icon"><i class="ri-stack-line"></i></div>
-            <h4 class="title"><a href="">´Ù¸¥±İÀ¶±â°üÁ¤º¸Á¶È¸</a></h4>
-            <p class="description">Æú·ÎÀºÇà¿¡¼­ ´Ù¸¥±İÀ¶±â°üÀÇ ³» °èÁÂÁ¤º¸ Á¶È¸ °¡´É! ¼ö¼ö·á ¾øÀÌ ´Ù¸¥±İÀ¶±â°üÀÇ °èÁÂ¿¡¼­ ÀÌÃ¼ °¡´É </p>
+            <h4 class="title"><a href="/BankMVC/oblist.do">ë‹¤ë¥¸ê¸ˆìœµê¸°ê´€ì •ë³´ì¡°íšŒ</a></h4>
+            <p class="description">í´ë¡œì€í–‰ì—ì„œ ë‹¤ë¥¸ê¸ˆìœµê¸°ê´€ì˜ ë‚´ ê³„ì¢Œì •ë³´ ì¡°íšŒ ê°€ëŠ¥! ìˆ˜ìˆ˜ë£Œ ì—†ì´ ë‹¤ë¥¸ê¸ˆìœµê¸°ê´€ì˜ ê³„ì¢Œì—ì„œ ì´ì²´ ê°€ëŠ¥ </p>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
           <div class="icon-box">
             <div class="icon"><i class="ri-palette-line"></i></div>
-            <h4 class="title"><a href="">Á¶È¸</a></h4>
+            <h4 class="title"><a href="/BankMVC/myaccount.do">ì¡°íšŒ</a></h4>
             <p class="description">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
@@ -88,7 +88,7 @@
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
           <div class="icon-box">
             <div class="icon"><i class="ri-command-line"></i></div>
-            <h4 class="title"><a href="">ÀÌÃ¼</a></h4>
+            <h4 class="title"><a href="/BankMVC/accounttransfer.do">ì´ì²´</a></h4>
             <p class="description">
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
@@ -101,7 +101,7 @@
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
           <div class="icon-box">
             <div class="icon"><i class="ri-fingerprint-line"></i></div>
-            <h4 class="title"><a href="/BankMVC/productlist.do">»óÇ°</a></h4>
+            <h4 class="title"><a href="/BankMVC/productlist.do">ìƒí’ˆ</a></h4>
             <p class="description">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 

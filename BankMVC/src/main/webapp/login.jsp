@@ -48,19 +48,19 @@
             <form action="/BankMVC/loginprocess.do" method="post">
               <div class="form-group first">
                 <label for="username">ID</label>
-                <input type="text" class="form-control" id="username">
+                <input type="text" class="form-control" id="username" name="id">
 
               </div>
               <div class="form-group last mb-3">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" id="password" name="password">
                 
               </div>
               
               <div class="d-flex mb-5 align-items-center">
                 <label class="control control--checkbox mb-0"><span class="caption"></span>
                   <input type="checkbox" checked="checked"/>
-                  <div class="control indicator"></div>
+                  
                 </label>
                 <span class="ml-auto"><a href="/BankMVC/beforeinsertUser.do" class="newaccount" >회원가입</a></span>
                 <span class="ml-auto"><a href="#" class="forgot-pass">비밀번호찾기</a></span> 
@@ -68,12 +68,12 @@
 
               <input type="submit" value="로그인" class="btn btn-block btn-primary">
 
-              <span class="d-block text-center my-4 text-muted">&mdash; 카카오톡으로 로그인 &mdash;</span>
+              <span class="d-block text-center my-4 text-muted">&mdash; facebook으로 로그인 &mdash;</span>
               
               <div class="social-login">
               <%-- 이부분 카카오톡으로 수정 --%>
                 <a href="#" class="facebook btn d-flex justify-content-center align-items-center">
-                  <span class="icon-facebook mr-3"></span> Login with KakaoTalk
+                  <span class="icon-facebook mr-3"></span> Login with facebook
                 </a>
                
                

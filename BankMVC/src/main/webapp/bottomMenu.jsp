@@ -53,17 +53,17 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>OnePage</h3>
+            <h3>POLO BANK</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              서울<br>
+              강남<br>
+              폴로번지 <br><br>
+              <strong>Phone:</strong> +1 1111 2222 3333<br>
+              <strong>Email:</strong> polo@bank.com<br>
             </p>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
+ <%--         <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
@@ -96,7 +96,7 @@
         </div>
       </div>
     </div>
-
+--%> 
     <div class="container d-md-flex py-4">
 
       <div class="me-md-auto text-center text-md-start">
@@ -111,6 +111,7 @@
           Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
       </div>
+      <%-- 
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -118,6 +119,7 @@
         <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
+      --%>
     </div>
   </footer><!-- End Footer -->
 

@@ -23,6 +23,7 @@
   flex-wrap: wrap;
   margin-top: 50px;
   margin-bottom: 50px;
+  
 }
 
 .half > div {
@@ -32,11 +33,39 @@
 #join {
   margin-top: 50px;
   margin-bottom: 50px;
+  transform : scale(1);
+ 
 }
 
 #join .row > div {
   margin-top: 10px;
+   border-radius:50%;
 }
+#postcode[readonly], #address[readonly]{
+background-color:#ffffff;
+}
+
+#submitbtn {
+
+margin-top : 50px;
+
+}
+.half .contents .form-group, .half .bg .form-group {
+    overflow: hidden;
+    margin-bottom: 0;
+    border: 2px solid #efefef;
+    padding: 15px 15px;
+    /* border-bottom: none; */
+    position: relative;
+    margin-bottom: 10px; 
+    height: 60px;
+   
+}
+
+#submitbtn {
+
+}
+
 
 
 </style>
@@ -160,6 +189,7 @@
             }).open();
         }
         
+      
      
       /*  
         $(document).ready(function() {
@@ -183,18 +213,18 @@
  <jsp:include page="topMenu.jsp"/>
 </div>
 <!-- End Header -->
-<div class="container">
+<div class="container" >
   <div class="d-lg-flex half">
     <div class="contents order-2 order-md-1">
-      <div class="container">
+      
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7" id="join">
             <div class="mb-4">
               <h3>회원가입</h3>
               <p class="mb-4"></p>
             </div>
-            <form action="/BankMVC/main.do" method="post" name="inputForm" id="signupForm" onsubmit="return checkSubmit()">
-              <div class="row">
+            <form action="/BankMVC/insertUserProcess.do" method="post" name="inputForm" id="signupForm" onsubmit="return checkSubmit()">
+              <div class="row" id="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="username">ID</label>
@@ -221,7 +251,6 @@
                     <input type="text" class="form-control" id="phone" name="phone">
                   </div>
                   
-                  
                 </div>
                 <div class="col-md-6" id="rightbar">
                   
@@ -231,11 +260,11 @@
                   </div>
                   <div class="form-group">
                     <label for="postcode">우편번호</label>
-                    <input type="text" name="postcode" class="form-control" id="postcode" placeholder="" required>
+                    <input type="text" name="postcode" class="form-control" id="postcode" placeholder="" readonly required>
                   </div>
                   <div class="form-group">
                     <label for="address">주소</label>
-                    <input type="text" name="address" class="form-control" id="address"  placeholder="" required>
+                    <input type="text" name="address" class="form-control" id="address"  placeholder="" readonly required>
                   </div>
                   <div class="form-group">
                     <label for="detailAddress">상세주소</label>
@@ -243,19 +272,21 @@
                   </div>
                   <div class="form-group">
                     <label for="extraAddress">참고항목</label>
-                    <input type="text" id="extraAddress" class="form-control" placeholder="">
+                    <input type="text" name="extraAddress" id="extraAddress" class="form-control" placeholder="">
                   </div>
+                  <input type="hidden" id="fulladdress" name="fulladdress" value="">
+                  
                   <div class="form-group">
                     <label for="adminKey">관리자 암호 키</label>
-                    <input type="password" class="form-control" id="adminKey">
+                    <input type="text" class="form-control" id="adminKey" name="usertype">
                   </div>
                 </div>
               </div>
-              <input type="submit" value="회원가입" class="btn btn-block btn-primary">
+              <input type="submit" id="submitbtn" value="회원가입" class="btn btn-block btn-primary">
             </form>
           </div>
         </div>
-      </div>
+      
     </div>
   </div>
   

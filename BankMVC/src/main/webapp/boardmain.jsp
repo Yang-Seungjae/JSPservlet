@@ -163,7 +163,8 @@
         <div class="row mt-5" id="googlemap">
         <div>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21305.715677150853!2d127.14227922477284!3d37.45804002333402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357caf33963d4e07%3A0xf472ab67f14582d2!2z7ZWc6rWt7Y-066as7YWN64yA7ZWZIOyEseuCqOy6oO2NvOyKpA!5e0!3m2!1sko!2sus!4v1687418168308!5m2!1sko!2sus" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+        </div>aweffghfchjvhbmjhkhjl;,:L/l;'
+        l;'hjkity865fgfgjhknk;m,.
         </div>
           
         

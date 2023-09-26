@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,38 +44,40 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
+  <div class="container d-flex align-items-center justify-content-between">
+    <h1 class="logo"><a href="/BankMVC/main.do">POLO Bank</a></h1>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <c:choose>
+          <c:when test="${ empty loginUser }">
+            <li><a class="nav-link scrollto active" href="/BankMVC/login.do">로그인</a></li>
+          </c:when>
+          <c:otherwise>
+            <li><a class="nav-link scrollto active" href="/BankMVC/logout.do">로그아웃</a></li>
+          </c:otherwise>
+        </c:choose>
+        <li><a class="nav-link scrollto o" href="">오픈뱅킹</a></li>
+        <li class="dropdown"><a href="#"><span>내 계좌</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="/BankMVC/myaccount.do">조회</a></li>
+            <li><a href="/BankMVC/accounttransfer.do">이체</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link scrollto o" <%-- href="/BankMVC/boardmain.do" --%>>문의게시판</a></li>
+        <li><a class="nav-link scrollto" href="/BankMVC/productlist.do">상품</a></li>
+        <li class="dropdown"><a href="#"><span>마이페이지</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="#">개인정보수정</a></li>
+            <li><a href="#">내 상품조회</a></li>
+          </ul>
+        </li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+  </div>
+</header>
 
-      <h1 class="logo"><a href="/BankMVC/main.do">POLO Bank</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="/BankMVC/login.do">로그인</a></li>
-          <li><a class="nav-link scrollto active" href="/BankMVC/logout.do">로그아웃</a></li>
-          <li><a class="nav-link scrollto o" href="">오픈뱅킹</a></li>
-          <li class="dropdown"><a href="#"><span>내 계좌</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">조회</a></li>
-              <li><a href="#">이체</a></li>
-            </ul>
-          </li>    
-          <li><a class="nav-link scrollto o" href="/BankMVC/boardmain.do">문의게시판</a></li>
-          <li><a class="nav-link scrollto" href="/BankMVC/productlist.do">상품</a></li>
-          <li class="dropdown"><a href="#"><span>마이페이지</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">개인정보수정</a></li>
-              <li><a href="#">내 상품조회</a></li>
-            </ul>
-          </li>
-         
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
+  <!-- End Header -->
 
   
   

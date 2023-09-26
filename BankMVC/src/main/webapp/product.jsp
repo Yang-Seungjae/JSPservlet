@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="EUC-KR"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,9 +40,25 @@
   ======================================================== -->
 </head>
 <style>
-#pricing {
-margin-top : 50px;
+
+
+#swiper-pagination2 {
+  position: absolute;
+  bottom: 0px; /* 아래에서 20px 위치로 조정 */
+  left: 1050px; /* 가로 중앙으로 조정 */
+  transform: translateX(-50%);
+  text-align: center;
+  transition: .3s opacity;
+  z-index: 10;
 }
+
+#testimonial-item2{
+min-height : 600px;
+position: relative;
+left:100px;
+}
+
+
 </style>
 <body>
 
@@ -55,68 +72,35 @@ margin-top : 50px;
     
 
 <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>폴로은행 신규계좌상품목록</h2>
-          <p>지금 신규계좌 개설해서 목돈굴리자!</p>
+<section id="pricing" class="pricing">
+  <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+    <div class="swiper-wrapper">
+      <c:forEach var="product" items="${products}">
+        <div class="swiper-slide">
+          <div class="testimonial-item" id="testimonial-item2">
+            <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
+              <div class="box">
+             	 
+                <h3>${product.pd_name}</h3>
+                <h4>${product.interest}<sup>&nbsp%</sup><span> / ${product.period }year</span></h4>
+                <ul>
+                  <li>${product.pd_content}</li>
+                  <li>${product.pd_detail}</li>
+                </ul>
+                <div class="btn-wrap">
+                  <a href="/BankMVC/insertaccountprocess.do?productName=${product.pd_name}&amp;productNumber=${product.pd_number}" class="btn-buy">계좌 개설</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </c:forEach>
+    </div>
+    <div class="swiper-pagination" id="swiper-pagination2"></div>
+  </div>
+</section>
+<!-- End Pricing Section -->
 
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
-            <div class="box">
-              <h3>폴로적금</h3>
-              <h4>5<sup>&nbsp%</sup><span> / year</span></h4>
-              <ul>
-                <li>복잡하지 않고 간단한 적금</li>
-                <li>높은 연이자 보장</li>
-                <li>오픈뱅킹 가입고객만 개설 가능</li>
-  <%-- <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li> --%>              
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">계좌 개설</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
-            <div class="box featured">
-              <h3>폴로 첫거래우대 정기예금</h3>
-              <h4>10<sup>&nbsp%</sup><span> / year</span></h4>
-              <ul>
-                <li>폴로은행 첫거래 고객을 우대하는 전용 고금리 예금</li>
-                <li>오픈뱅킹 가입고객 추가 혜택</li>
-                <li>목돈굴리기 상품</li>
-            
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">계좌 개설</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
-            <div class="box">
-              <h3>폴로 200일 적금</h3>
-              <h4>3<sup>&nbsp%</sup><span> / 7 month</span></h4>
-              <ul>
-                <li>200일 동안 즐겁게 저축하고</li>
-                <li>최대 이자 3%의 금리까지 받을 수 있는</li>
-                <li>핵꿀 적금!</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">계좌 개설</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Pricing Section -->
   
   <!-- ======= footer ======= -->
   

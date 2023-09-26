@@ -10,7 +10,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="loginassets/css/bootstrap.min.css">
 
-  <title>약관 동의</title>
+  <title>오픈뱅킹 약관 동의</title>
   <style>
   
 .card {
@@ -61,7 +61,7 @@
       <div class="col-lg-8">
         
           <div class="card-body">
-            <h3 class="card-title text-center">약관 동의</h3>
+            <h3 class="card-title text-center">오픈뱅킹 약관 동의</h3>
             <hr>
             <div class="form-group">
               <div class="form-check">
